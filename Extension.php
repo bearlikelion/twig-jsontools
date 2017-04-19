@@ -34,8 +34,8 @@ class Extension extends \Twig_Extension
 	public function getFunctions()
 	{
 		return array(
-			'json_decode'  => new \Twig_Function_Method($this, 'jsonDecode'),
-			'json_encode' => new \Twig_Function_Method($this, 'jsonEncode')
+			'json_decode'  => new \Twig_SimpleFunction('json_decode', [$this, 'jsonDecode']),
+			'json_encode' => new \Twig_SimpleFunction('json_encode', [$this, 'jsonEncode']),
 		);
 	}
 
