@@ -46,7 +46,7 @@ class Extension extends \Twig_Extension
 	 */
 	public function jsonDecode($string)
 	{
-		return json_decode($string);
+		return json_decode($string, true);
 	}
 
 	/**
