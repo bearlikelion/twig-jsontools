@@ -11,8 +11,9 @@
 		}
 	],
 	"require": {
-		"php": ">=5.3.0",
-		"twig/twig": "^1.38 || ^2.7"
+		"php": ">=7.2",
+		"ext-json": "*",
+		"twig/twig": "^2.7 || ^3.0"
 	},
 	"autoload": {
 		"files": ["Extension.php"]

@@ -8,7 +8,11 @@
 
 namespace Bearlikelion\TwigJsonTools;
 
-class Extension extends \Twig_Extension
+use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
+use Twig\TwigFunction;
+
+class Extension extends AbstractExtension
 {
 	/**
 	 * Define Twig filters
@@ -17,11 +21,11 @@ class Extension extends \Twig_Extension
 	 * {{ string|json_encode }}
 	 * @return array
 	 */
-	public function getFilters()
+	public function getFilters(): array
 	{
-		return array(
-			new \Twig_SimpleFilter('json_decode', array($this, 'jsonDecode'))
-		);
+		return [
+			new TwigFilter('json_decode', [$this, 'jsonDecode'])
+		];
 	}
 
 	/**
@@ -31,18 +35,18 @@ class Extension extends \Twig_Extension
 	 * {{ json_encode(string) }}
 	 * @return array
 	 */
-	public function getFunctions()
+	public function getFunctions(): array
 	{
-		return array(
-			'json_decode'  => new \Twig_SimpleFunction('json_decode', [$this, 'jsonDecode']),
-			'json_encode' => new \Twig_SimpleFunction('json_encode', [$this, 'jsonEncode']),
-		);
+		return [
+			'json_decode'  => new TwigFunction('json_decode', [$this, 'jsonDecode']),
+			'json_encode' => new TwigFunction('json_encode', [$this, 'jsonEncode']),
+		];
 	}
 
 	/**
 	 * Decode JSON string
-	 * @param  string $string
-	 * @return object
+	 * @param  string|array $string
+	 * @return string|array
 	 */
 	public function jsonDecode($string)
 	{
@@ -51,17 +55,11 @@ class Extension extends \Twig_Extension
 
 	/**
 	 * Encode an object or array to JSON
-	 * @param  array $array
-	 * @return string
+	 * @param  mixed $array
+	 * @return string|false
 	 */
 	public function jsonEncode($array)
 	{
 		return json_encode($array);
-	}
-
-	/** Extension name */
-	public function getName()
-	{
-		return 'json_extension';
 	}
 }

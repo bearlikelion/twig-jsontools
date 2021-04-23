@@ -4,7 +4,7 @@ A simple twig extension to provide json encode and decode filters and functions 
 
 **Requirements:**
 
-* [Twig](https://github.com/fabpot/Twig)
+* [Twig](https://github.com/twigphp/Twig)
 
 ## Installation
 ```
@@ -15,8 +15,8 @@ A simple twig extension to provide json encode and decode filters and functions 
 
 ## Example
 ```PHP
-$twig = new Twig_Environment(new Twig_Loader_Filesystem('Views'));
-$twig->addExtension(new Bearlikelion\TwigJsonTools\Extension);
+$twig = new \Twig\Environment(new \Twig\Loader\FilesystemLoader('Views'));
+$twig->addExtension(new Bearlikelion\TwigJsonTools\Extension());
 ```
 
 ```html
